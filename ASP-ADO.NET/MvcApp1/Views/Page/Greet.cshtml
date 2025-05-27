@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Персональное приветствие";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <!-- Главная карточка приветствия -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h1 class="display-4 mb-0">
+                        <i class="fas fa-hand-wave"></i>
+                        Привет, @ViewBag.UserName!
+                    </h1>
+                </div>
+
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4">
+                        <h3 class="text-muted">Добро пожаловать на наш сайт!</h3>
+                        <p class="lead">Рады видеть тебя здесь, <strong class="text-primary">@ViewBag.UserName</strong></p>
+                    </div>
+
+                    <!-- Информационные карточки -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-calendar-alt text-info"></i>
+                                        Сегодняшняя дата
+                                    </h5>
+                                    <p class="card-text fs-5 text-info">@ViewBag.CurrentDate</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-clock text-success"></i>
+                                        Текущее время
+                                    </h5>
+                                    <p class="card-text fs-5 text-success">@ViewBag.CurrentTime</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная информация -->
+                    <div class="alert alert-info mt-4" role="alert">
+                        <h4 class="alert-heading">💡 Совет!</h4>
+                        <p class="mb-0">
+                            Ты можешь изменить имя в URL:
+                            <code>/Page/Greet/ТвоеИмя</code>
+                        </p>
+                    </div>
+
+                    <!-- Кнопки навигации -->
+                    <div class="mt-4">
+                        <a href="/Page/Welcome" class="btn btn-outline-primary me-2">
+                            <i class="fas fa-home"></i> На главную
+                        </a>
+                        <a href="/Page/Greet/Друг" class="btn btn-outline-success">
+                            <i class="fas fa-user-friends"></i> Поприветствовать друга
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(45deg, #6c5ce7, #a29bfe) !important;
+    }
+
+    .card {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .fas {
+        margin-right: 8px;
+    }
+
+    .btn {
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-weight: 500;
+    }
+</style>
+
+<!-- Подключаем Font Awesome для иконок -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Добро пожаловать";
+}
+
+<div class="text-center">
+    <h1 class="display-4 text-primary">🎉 Добро пожаловать! 🎉</h1>
+    
+    <div class="card mt-4 mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <h5 class="card-title">Приветственное сообщение</h5>
+            <p class="card-text">
+                Привет! Это моя первая страница на ASP.NET Core MVC.
+            </p>
+            <hr>
+            <p class="card-text">
+                <strong>Текущая дата и время:</strong><br>
+                <span class="text-info">@ViewBag.CurrentDate</span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="mt-4">
+        <p class="text-muted">
+            Страница создана с использованием Razor Pages и Bootstrap
+        </p>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: white;
+    }
+    
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+</style>

@@ -1,0 +1,7 @@
+# Файлы Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache

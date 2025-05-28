@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP-ADO.NET", "ASP-ADO.NET\ASP-ADO.NET.csproj", "{298E5CB0-CB6B-434B-8431-B6C34FD47030}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "КТ-1", "КТ-1", "{C7FC1EA3-D9BC-4913-BB10-5FEBC44E3FEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp1", "MvcApp1\MvcApp1.csproj", "{E38AC0F2-841E-4779-ACD8-DF1AA230E800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcApp1", "MvcApp1\MvcApp1.csproj", "{E38AC0F2-841E-4779-ACD8-DF1AA230E800}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "КТ-2", "КТ-2", "{6C095698-100E-431B-8114-512943EE6712}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text-Editor", "Text-Editor\Text-Editor.csproj", "{2FABDF3C-1B95-40E0-AFE2-EC2E4E804FE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Text-Editor", "Text-Editor\Text-Editor.csproj", "{2FABDF3C-1B95-40E0-AFE2-EC2E4E804FE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2KT", "2KT\2KT.csproj", "{2C76EF33-3B1A-4B0F-BCD4-B9E2B4989803}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{298E5CB0-CB6B-434B-8431-B6C34FD47030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{298E5CB0-CB6B-434B-8431-B6C34FD47030}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{298E5CB0-CB6B-434B-8431-B6C34FD47030}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{298E5CB0-CB6B-434B-8431-B6C34FD47030}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E38AC0F2-841E-4779-ACD8-DF1AA230E800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E38AC0F2-841E-4779-ACD8-DF1AA230E800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E38AC0F2-841E-4779-ACD8-DF1AA230E800}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +27,10 @@ Global
 		{2FABDF3C-1B95-40E0-AFE2-EC2E4E804FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FABDF3C-1B95-40E0-AFE2-EC2E4E804FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FABDF3C-1B95-40E0-AFE2-EC2E4E804FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C76EF33-3B1A-4B0F-BCD4-B9E2B4989803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C76EF33-3B1A-4B0F-BCD4-B9E2B4989803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C76EF33-3B1A-4B0F-BCD4-B9E2B4989803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C76EF33-3B1A-4B0F-BCD4-B9E2B4989803}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Text_Editor.Models;
+using TextEditor.Models;
 
-namespace Text_Editor.Controllers
+namespace TextEditor.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,0 +1,260 @@
+﻿@model TextEditor.Controllers.TextEditorViewModel
+@{
+    ViewData["Title"] = "Текстовый редактор";
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- TinyMCE Editor -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <style>
+        .editor-toolbar {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-bottom: none;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .simple-textarea {
+            border-radius: 0 0 5px 5px;
+            border-top: none;
+            min-height: 300px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .saved-content {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            min-height: 100px;
+        }
+
+        .editor-mode-toggle {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">
+                    <i class="fas fa-edit text-primary"></i> Текстовый редактор
+                </h1>
+
+                <!-- Сообщения -->
+                @if (!string.IsNullOrEmpty(ViewBag.Message))
+                {
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> @ViewBag.Message
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i> @ViewBag.ErrorMessage
+                    </div>
+                }
+
+                <!-- Переключатель режимов редактора -->
+                <div class="editor-mode-toggle">
+                    <div class="btn-group" role="group">
+                        <input type="radio" class="btn-check" name="editorMode" id="simpleMode" value="simple" checked>
+                        <label class="btn btn-outline-primary" for="simpleMode">
+                            <i class="fas fa-keyboard"></i> Простой редактор
+                        </label>
+
+                        <input type="radio" class="btn-check" name="editorMode" id="richMode" value="rich">
+                        <label class="btn btn-outline-primary" for="richMode">
+                            <i class="fas fa-palette"></i> WYSIWYG редактор
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Простой текстовый редактор -->
+                <div id="simpleEditor">
+                    <form method="post" action="@Url.Action("SaveText", "TextEditor")">
+                        <!-- Панель инструментов для простого редактора -->
+                        <div class="editor-toolbar">
+                            <div class="btn-group me-2" role="group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="formatText('bold')" title="Жирный">
+                                    <i class="fas fa-bold"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="formatText('italic')" title="Курсив">
+                                    <i class="fas fa-italic"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="formatText('underline')" title="Подчеркнутый">
+                                    <i class="fas fa-underline"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <textarea id="simpleTextarea" name="content" class="form-control simple-textarea"
+                                  placeholder="Начните вводить текст здесь...">@Model.Content</textarea>
+
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-success me-2">
+                                <i class="fas fa-save"></i> Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- WYSIWYG редактор -->
+                <div id="richEditor" style="display: none;">
+                    <form method="post" action="@Url.Action("SaveText", "TextEditor")">
+                        <textarea id="richTextarea" name="content">@Html.Raw(Model.Content)</textarea>
+
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-success me-2">
+                                <i class="fas fa-save"></i> Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Кнопка загрузки -->
+                <form method="post" action="@Url.Action("LoadText", "TextEditor")" class="d-inline">
+                    <button type="submit" class="btn btn-info">
+                        <i class="fas fa-download"></i> Загрузить сохраненный текст
+                    </button>
+                </form>
+
+                <!-- Отображение сохраненного текста -->
+                @if (!string.IsNullOrEmpty(Model.SavedContent))
+                {
+                    <div class="mt-4">
+                        <h3>Сохраненный текст:</h3>
+                        <div class="saved-content">
+                            @if (Model.SavedContent.Contains("<") && Model.SavedContent.Contains(">"))
+                            {
+                                @Html.Raw(Model.SavedContent)
+                            }
+                            else
+                            {
+                                <pre>@Model.SavedContent</pre>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let tinymceEditor = null;
+        let currentMode = 'simple';
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function () {
+            // Обработчики переключения режимов
+            document.querySelectorAll('input[name="editorMode"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    switchEditorMode(this.value);
+                });
+            });
+        });
+
+        // Переключение между режимами редактора
+        function switchEditorMode(mode) {
+            const simpleEditor = document.getElementById('simpleEditor');
+            const richEditor = document.getElementById('richEditor');
+            const simpleTextarea = document.getElementById('simpleTextarea');
+            const richTextarea = document.getElementById('richTextarea');
+
+            if (mode === 'simple') {
+                // Переключаемся на простой редактор
+                if (tinymceEditor) {
+                    const content = tinymceEditor.getContent();
+                    simpleTextarea.value = content;
+                    tinymce.remove('#richTextarea');
+                    tinymceEditor = null;
+                }
+
+                simpleEditor.style.display = 'block';
+                richEditor.style.display = 'none';
+                currentMode = 'simple';
+            } else {
+                // Переключаемся на WYSIWYG редактор
+                const content = simpleTextarea.value;
+                richTextarea.value = content;
+
+                simpleEditor.style.display = 'none';
+                richEditor.style.display = 'block';
+
+                initTinyMCE();
+                currentMode = 'rich';
+            }
+        }
+
+        // Инициализация TinyMCE
+        function initTinyMCE() {
+            tinymce.init({
+                selector: '#richTextarea',
+                height: 400,
+                menubar: true,
+                plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                ],
+                toolbar: 'undo redo | blocks | bold italic underline strikethrough | ' +
+                    'alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist outdent indent | removeformat | help',
+                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; }',
+                setup: function (editor) {
+                    tinymceEditor = editor;
+                }
+            });
+        }
+
+        // Форматирование текста в простом редакторе
+        function formatText(command) {
+            const textarea = document.getElementById('simpleTextarea');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end);
+
+            if (selectedText.length === 0) {
+                alert('Выберите текст для форматирования');
+                return;
+            }
+
+            let formattedText = '';
+            switch (command) {
+                case 'bold':
+                    formattedText = `**${selectedText}**`;
+                    break;
+                case 'italic':
+                    formattedText = `*${selectedText}*`;
+                    break;
+                case 'underline':
+                    formattedText = `<u>${selectedText}</u>`;
+                    break;
+            }
+
+            textarea.value = textarea.value.substring(0, start) + formattedText + textarea.value.substring(end);
+            textarea.focus();
+            textarea.setSelectionRange(start, start + formattedText.length);
+        }
+    </script>
+</body>
+</html>

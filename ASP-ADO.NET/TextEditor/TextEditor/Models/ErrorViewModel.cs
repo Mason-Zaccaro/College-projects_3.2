@@ -1,4 +1,4 @@
-namespace Text_Editor.Models
+namespace TextEditor.Models
 {
     public class ErrorViewModel
     {

@@ -1,12 +1,9 @@
-﻿using System.Xml.Linq;
-using WebApplication2.Models;
-
-public class TaskService
+﻿public class TaskService
 {
     private readonly List<TaskItem> _tasks = new();
     private int _nextId = 1;
 
-    public List<TaskItem> GetAll(TaskStatus? status = null)
+    public List<TaskItem> GetAll(TaskItemStatus? status = null)
     {
         if (status.HasValue)
             return _tasks.Where(t => t.Status == status.Value).ToList();
@@ -22,7 +19,7 @@ public class TaskService
         return task;
     }
 
-    public bool UpdateStatus(int id, TaskStatus status)
+    public bool UpdateStatus(int id, TaskItemStatus status)
     {
         var task = GetById(id);
         if (task == null) return false;

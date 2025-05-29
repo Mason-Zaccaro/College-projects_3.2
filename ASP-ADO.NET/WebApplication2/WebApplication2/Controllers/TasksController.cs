@@ -1,60 +1,50 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication2.Models;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BookingsController : ControllerBase
+public class TasksController : ControllerBase
 {
-    private readonly BookingService _bookingService;
+    private readonly TaskService _taskService;
 
-    public BookingsController(BookingService bookingService)
+    public TasksController(TaskService taskService)
     {
-        _bookingService = bookingService;
-    }
-
-    [HttpGet("available-resources")]
-    public ActionResult<List<Resource>> GetAvailableResources(
-        [FromQuery] DateTime startTime,
-        [FromQuery] DateTime endTime,
-        [FromQuery] string? resourceType = null)
-    {
-        var resources = _bookingService.GetAvailableResources(startTime, endTime, resourceType);
-        return Ok(resources);
-    }
-
-    [HttpPost]
-    public ActionResult<Booking> CreateBooking(Booking booking)
-    {
-        var created = _bookingService.CreateBooking(booking);
-        if (created == null) return BadRequest("Resource not available or doesn't exist");
-        return CreatedAtAction(nameof(GetBookings), new { id = created.Id }, created);
+        _taskService = taskService;
     }
 
     [HttpGet]
-    public ActionResult<List<Booking>> GetBookings()
+    public ActionResult<List<TaskItem>> GetAll([FromQuery] TaskItemStatus? status = null)
     {
-        return Ok(_bookingService.GetAllBookings());
+        return Ok(_taskService.GetAll(status));
     }
 
-    [HttpDelete("{id}")]
-    public IActionResult CancelBooking(int id)
+    [HttpPost]
+    public ActionResult<TaskItem> Create(TaskItem task)
     {
-        if (!_bookingService.CancelBooking(id))
+        var created = _taskService.Add(task);
+        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<TaskItem> GetById(int id)
+    {
+        var task = _taskService.GetById(id);
+        if (task == null) return NotFound();
+        return Ok(task);
+    }
+
+    [HttpPatch("{id}/status")]
+    public IActionResult UpdateStatus(int id, [FromBody] TaskItemStatus status)
+    {
+        if (!_taskService.UpdateStatus(id, status))
             return NotFound();
         return NoContent();
     }
 
-    [HttpPut("{id}")]
-    public IActionResult UpdateBooking(int id, [FromBody] UpdateBookingRequest request)
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
     {
-        if (!_bookingService.UpdateBooking(id, request.StartTime, request.EndTime))
-            return BadRequest("Booking not found or time slot not available");
+        if (!_taskService.Delete(id))
+            return NotFound();
         return NoContent();
     }
-}
-
-public class UpdateBookingRequest
-{
-    public DateTime StartTime { get; set; }
-    public DateTime EndTime { get; set; }
 }

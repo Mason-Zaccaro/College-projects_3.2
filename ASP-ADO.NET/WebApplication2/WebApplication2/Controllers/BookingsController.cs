@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication2.Models;
 
 [ApiController]
 [Route("api/[controller]")]

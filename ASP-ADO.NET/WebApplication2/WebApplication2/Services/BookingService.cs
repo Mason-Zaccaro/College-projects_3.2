@@ -1,6 +1,4 @@
-﻿using WebApplication2.Models;
-
-public class BookingService
+﻿public class BookingService
 {
     private readonly List<Booking> _bookings = new();
     private readonly List<Resource> _resources = new()

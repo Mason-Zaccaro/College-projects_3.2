@@ -1,8 +1,106 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model CryptoWebApp.Models.CryptoModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Шифрование текста</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Шифрование и дешифрование текста</h1>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="error">Ошибка: @ViewBag.Error</div>
+    }
+
+    <form method="post" action="/Home/Encrypt">
+        <div class="form-group">
+            <label for="Text">Текст для шифрования:</label>
+            <textarea name="Text" rows="4" placeholder="Введите текст...">@Model.Text</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Algorithm">Алгоритм шифрования:</label>
+            <select name="Algorithm">
+                <option value="AES" selected="@(Model.Algorithm == "AES")">AES</option>
+                <option value="RSA" selected="@(Model.Algorithm == "RSA")">RSA</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Key">Ключ (оставьте пустым для автогенерации):</label>
+            <textarea name="Key" rows="2" placeholder="Ключ будет сгенерирован автоматически">@Model.Key</textarea>
+        </div>
+
+        <button type="submit">Зашифровать</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.EncryptedText))
+    {
+        <div class="result">
+            <h3>Результат шифрования:</h3>
+            <div class="form-group">
+                <label>Зашифрованный текст:</label>
+                <textarea readonly rows="3">@Model.EncryptedText</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Проверка дешифрования:</label>
+                <textarea readonly rows="2">@Model.DecryptedText</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Использованный ключ:</label>
+                <textarea readonly rows="4">@Model.Key</textarea>
+            </div>
+        </div>
+    }
+</body>
+</html>

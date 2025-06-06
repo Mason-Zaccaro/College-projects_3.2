@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+<h2>Список пользователей</h2>
+<p><a asp-action="Create">Добавить пользователя</a></p>
+<table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.Id">Ред.</a> |
+                    <a asp-action="Delete" asp-route-id="@user.Id">Удал.</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

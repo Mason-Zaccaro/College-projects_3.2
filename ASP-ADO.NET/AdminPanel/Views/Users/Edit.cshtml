@@ -1,0 +1,26 @@
+﻿@model AdminPanel.Models.EditUserViewModel
+@{
+    ViewData["Title"] = "Редактировать пользователя";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Role"></label>
+        <select asp-for="Role" asp-items="new SelectList(ViewBag.Roles)">
+            <option value="">--Выберите роль--</option>
+        </select>
+        <span asp-validation-for="Role"></span>
+    </div>
+    <button type="submit">Сохранить</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

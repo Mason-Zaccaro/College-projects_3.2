@@ -1,0 +1,36 @@
+﻿@model UserModel
+
+<form asp-action="Register" method="post">
+    <label>Имя пользователя:</label>
+    <input asp-for="Username" />
+    <span asp-validation-for="Username"></span>
+    <br>
+
+    <label>Email:</label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <br>
+
+    <label>Пароль:</label>
+    <input asp-for="Password" type="password" />
+    <span asp-validation-for="Password"></span>
+    <br>
+
+    <label>Подтвердите пароль:</label>
+    <input asp-for="ConfirmPassword" type="password" />
+    <span asp-validation-for="ConfirmPassword"></span>
+    <br>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:green">@ViewBag.Message</p>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

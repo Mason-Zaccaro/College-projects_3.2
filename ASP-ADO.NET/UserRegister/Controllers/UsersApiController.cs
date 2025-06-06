@@ -10,6 +10,7 @@ namespace AdminPanel.Controllers.Api
     {
         private static int _idCounter = 1;
         private readonly UserManager<IdentityUser> _userManager;
+        private static List<InternalUser> _db = new List<InternalUser>();
 
         public class UserDto
         {
@@ -28,7 +29,6 @@ namespace AdminPanel.Controllers.Api
             _userManager = userManager;
         }
 
-        private static List<InternalUser> _db = new List<InternalUser>();
         [HttpGet]
         public IActionResult GetAll()
         {

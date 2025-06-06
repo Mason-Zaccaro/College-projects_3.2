@@ -49,6 +49,8 @@ app.UseAuthorization();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    var db = services.GetRequiredService<ApplicationDbContext>();
+    db.Database.EnsureCreated();      // Автоматически создаёт базу и все таблицы, которых ещё нет
     await DbInitializer.InitializeAsync(services);
 }
 

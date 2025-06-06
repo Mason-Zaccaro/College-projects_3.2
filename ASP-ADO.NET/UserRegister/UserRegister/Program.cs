@@ -2,36 +2,30 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавляем сервисы
-builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<UserStorageService>();
+// 1) Регистрируем необходимые сервисы
+builder.Services.AddControllersWithViews();               // MVC + [ApiController]
+builder.Services.AddSingleton<UserStorageService>();      // наш “in-memory” сервис хранения
 
 var app = builder.Build();
 
-// Конфигурация middleware
+// 2) Конфигурация middleware
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();       // уместно для Production
 }
 
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
-// Маршруты MVC и API
+// 3) Привязываем маршруты
+// Сначала – MapControllers (обязательно для [ApiController])
+app.MapControllers();
+
+// Затем – MVC-маршрут (если нужен контроллер Register для рендеринга вьюхи)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Register}/{action=Index}/{id?}");
 
 app.Run();
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}

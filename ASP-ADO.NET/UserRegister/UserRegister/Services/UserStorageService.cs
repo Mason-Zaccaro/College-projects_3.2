@@ -1,17 +1,28 @@
-﻿// Services/UserStorageService.cs
-using UserRegister.Models;
+﻿using UserRegister.Models;
 
 namespace UserRegister.Services
 {
     public class UserStorageService
     {
+        // Список “in-memory” для хранения всех зарегистрированных пользователей.
         private readonly List<UserDto> _users = new();
+
+        // Счётчик ID (если нужен уникальный идентификатор).
         private int _nextId = 1;
 
-        public List<UserDto> GetAll() => _users;
+        // Возвращает всех пользователей
+        public IEnumerable<UserDto> GetAll()
+        {
+            return _users;
+        }
 
-        public UserDto? Get(int id) => _users.FirstOrDefault(u => u.Id == id);
+        // Возвращает одного пользователя по id
+        public UserDto? Get(int id)
+        {
+            return _users.FirstOrDefault(u => u.Id == id);
+        }
 
+        // Добавляет нового пользователя (назначает ему Id, кладёт в коллекцию)
         public UserDto Add(UserDto user)
         {
             user.Id = _nextId++;
@@ -19,17 +30,26 @@ namespace UserRegister.Services
             return user;
         }
 
-        public bool Update(int id, UserDto updated)
+        // Обновляет существующего пользователя (по id)
+        public bool Update(int id, UserDto newUser)
         {
-            var user = Get(id);
-            if (user == null) return false;
+            var existing = _users.FirstOrDefault(u => u.Id == id);
+            if (existing is null) return false;
 
-            user.Username = updated.Username;
-            user.Email = updated.Email;
-            user.Password = updated.Password;
+            // Здесь можно обновлять нужные поля:
+            existing.Username = newUser.Username;
+            existing.Email = newUser.Email;
+            existing.Password = newUser.Password;
             return true;
         }
 
-        public bool Delete(int id) => _users.RemoveAll(u => u.Id == id) > 0;
+        // Удаляет пользователя по id
+        public bool Delete(int id)
+        {
+            var existing = _users.FirstOrDefault(u => u.Id == id);
+            if (existing is null) return false;
+            _users.Remove(existing);
+            return true;
+        }
     }
 }

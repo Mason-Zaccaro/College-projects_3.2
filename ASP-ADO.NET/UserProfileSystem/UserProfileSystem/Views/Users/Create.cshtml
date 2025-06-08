@@ -1,0 +1,35 @@
+﻿@model UserProfileSystem.Models.User
+
+<h2>Создать пользователя</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div style="background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
+        <div asp-validation-summary="All"></div>
+    </div>
+}
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+    <div>
+        <label asp-for="Username">Имя пользователя:</label>
+        <input asp-for="Username" required />
+        <span asp-validation-for="Username" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" type="email" required />
+        <span asp-validation-for="Email" style="color: red;"></span>
+    </div>
+    <div>
+        <input type="submit" value="Создать" />
+    </div>
+</form>
+
+<div>
+    <a href="@Url.Action("Index")">Назад к списку</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UserProfileSystem.Models.User>
+
+<h2>Пользователи</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div style="background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p>
+    <a href="@Url.Action("Create")">Создать нового</a>
+</p>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Имя пользователя</th>
+        <th>Email</th>
+        <th>Дата создания</th>
+        <th>Профиль</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Username</td>
+            <td>@item.Email</td>
+            <td>@item.CreatedAt.ToString("dd.MM.yyyy")</td>
+            <td>@(item.UserProfile != null ? "Есть" : "Нет")</td>
+            <td>
+                <a href="@Url.Action("Details", new { id = item.Id })">Детали</a> |
+                <a href="@Url.Action("Edit", new { id = item.Id })">Редактировать</a> |
+                <a href="@Url.Action("Profile", new { id = item.Id })">Профиль</a> |
+                <a href="@Url.Action("Delete", new { id = item.Id })">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>

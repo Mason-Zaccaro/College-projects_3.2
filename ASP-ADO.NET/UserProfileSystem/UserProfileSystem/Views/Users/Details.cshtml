@@ -1,0 +1,50 @@
+﻿@model UserProfileSystem.Models.User
+
+<h2>Детали пользователя</h2>
+
+<div>
+    <dl>
+        <dt>ID:</dt>
+        <dd>@Model.Id</dd>
+
+        <dt>Имя пользователя:</dt>
+        <dd>@Model.Username</dd>
+
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+
+        <dt>Дата создания:</dt>
+        <dd>@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+    </dl>
+
+    @if (Model.UserProfile != null)
+    {
+        <h3>Профиль</h3>
+        <dl>
+            <dt>Имя:</dt>
+            <dd>@Model.UserProfile.FirstName</dd>
+
+            <dt>Фамилия:</dt>
+            <dd>@Model.UserProfile.LastName</dd>
+
+            <dt>Биография:</dt>
+            <dd>@Model.UserProfile.Bio</dd>
+
+            <dt>Телефон:</dt>
+            <dd>@Model.UserProfile.PhoneNumber</dd>
+
+            <dt>Дата рождения:</dt>
+            <dd>@(Model.UserProfile.DateOfBirth?.ToString("dd.MM.yyyy") ?? "Не указана")</dd>
+        </dl>
+    }
+    else
+    {
+        <p>Профиль не заполнен. <a href="@Url.Action("Profile", new { id = Model.Id })">Создать профиль</a></p>
+    }
+</div>
+
+<div>
+    <a href="@Url.Action("Edit", new { id = Model.Id })">Редактировать</a> |
+    <a href="@Url.Action("Profile", new { id = Model.Id })">Редактировать профиль</a> |
+    <a href="@Url.Action("Index")">Назад к списку</a>
+</div>

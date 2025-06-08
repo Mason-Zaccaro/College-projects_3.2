@@ -1,0 +1,42 @@
+﻿@model UserProfileSystem.Models.User
+
+<h2>Профиль пользователя: @Model.Username</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div style="background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<form asp-action="Profile">
+    <input type="hidden" asp-for="UserProfile.UserId" />
+
+    <div>
+        <label asp-for="UserProfile.FirstName">Имя:</label>
+        <input asp-for="UserProfile.FirstName" />
+    </div>
+    <div>
+        <label asp-for="UserProfile.LastName">Фамилия:</label>
+        <input asp-for="UserProfile.LastName" />
+    </div>
+    <div>
+        <label asp-for="UserProfile.Bio">Биография:</label>
+        <textarea asp-for="UserProfile.Bio"></textarea>
+    </div>
+    <div>
+        <label asp-for="UserProfile.PhoneNumber">Телефон:</label>
+        <input asp-for="UserProfile.PhoneNumber" />
+    </div>
+    <div>
+        <label asp-for="UserProfile.DateOfBirth">Дата рождения:</label>
+        <input asp-for="UserProfile.DateOfBirth" type="date" />
+    </div>
+    <div>
+        <input type="submit" value="Сохранить профиль" />
+    </div>
+</form>
+
+<div>
+    <a href="@Url.Action("Index")">Назад к списку</a>
+</div>

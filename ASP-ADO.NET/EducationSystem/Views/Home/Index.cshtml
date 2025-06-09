@@ -1,0 +1,39 @@
+@model EducationSystem.Controllers.HomeViewModel
+
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Добро пожаловать в систему управления учебным процессом</h1>
+    
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Преподаватели</h5>
+                    <p class="display-4">@Model.TeacherCount</p>
+                    <a asp-controller="Teachers" asp-action="Index" class="btn btn-primary">Управление</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Студенты</h5>
+                    <p class="display-4">@Model.StudentCount</p>
+                    <a asp-controller="Students" asp-action="Index" class="btn btn-primary">Управление</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Курсы</h5>
+                    <p class="display-4">@Model.CourseCount</p>
+                    <a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Управление</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

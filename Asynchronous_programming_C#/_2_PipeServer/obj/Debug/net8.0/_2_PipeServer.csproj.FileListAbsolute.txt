@@ -1,0 +1,15 @@
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.AssemblyInfoInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.AssemblyInfo.cs
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.csproj.CoreCompileInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.sourcelink.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\bin\Debug\net8.0\_2_PipeServer.exe
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\bin\Debug\net8.0\_2_PipeServer.deps.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\bin\Debug\net8.0\_2_PipeServer.runtimeconfig.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\bin\Debug\net8.0\_2_PipeServer.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\bin\Debug\net8.0\_2_PipeServer.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\refint\_2_PipeServer.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\_2_PipeServer.genruntimeconfig.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeServer\obj\Debug\net8.0\ref\_2_PipeServer.dll

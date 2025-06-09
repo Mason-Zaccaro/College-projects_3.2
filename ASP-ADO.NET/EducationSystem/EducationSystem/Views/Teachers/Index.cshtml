@@ -1,0 +1,18 @@
+﻿@model IEnumerable<EducationSystem.Models.Teacher>
+<h2>Преподаватели</h2>
+<p><a href="/Teachers/Create">Добавить</a></p>
+<table border="1">
+    <tr><th>Имя</th><th>Email</th><th>Действия</th></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>
+                <a href="/Teachers/Edit/@item.Id">Изменить</a> |
+                <a href="/Teachers/Delete/@item.Id">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+<p><a href="/">← Вернуться на главную</a></p>

@@ -1,0 +1,21 @@
+﻿@model EducationSystem.Models.Course
+<h2>Добавить курс</h2>
+<form method="post">
+    <div>
+        <label>Название:</label>
+        <input asp-for="Name" required />
+    </div>
+    <div>
+        <label>Описание:</label>
+        <textarea asp-for="Description"></textarea>
+    </div>
+    <div>
+        <label>Преподаватель:</label>
+        <select asp-for="TeacherId" asp-items="ViewBag.TeacherId" required>
+            <option value="">Выберите преподавателя</option>
+        </select>
+    </div>
+    <input type="submit" value="Сохранить" />
+    <a href="/Courses">Отмена</a>
+    <p><a href="/">← Вернуться на главную</a></p>
+</form>

@@ -1,0 +1,15 @@
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.AssemblyInfoInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.AssemblyInfo.cs
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.csproj.CoreCompileInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.sourcelink.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\bin\Debug\net8.0\Asynchronous_programming_C#.exe
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\bin\Debug\net8.0\Asynchronous_programming_C#.deps.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\bin\Debug\net8.0\Asynchronous_programming_C#.runtimeconfig.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\bin\Debug\net8.0\Asynchronous_programming_C#.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\bin\Debug\net8.0\Asynchronous_programming_C#.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\refint\Asynchronous_programming_C#.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\Asynchronous_programming_C#.genruntimeconfig.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\Asynchronous_programming_C#\obj\Debug\net8.0\ref\Asynchronous_programming_C#.dll

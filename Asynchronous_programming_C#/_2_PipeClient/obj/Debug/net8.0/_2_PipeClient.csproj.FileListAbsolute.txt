@@ -1,0 +1,15 @@
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\bin\Debug\net8.0\_2_PipeClient.exe
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\bin\Debug\net8.0\_2_PipeClient.deps.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\bin\Debug\net8.0\_2_PipeClient.runtimeconfig.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\bin\Debug\net8.0\_2_PipeClient.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\bin\Debug\net8.0\_2_PipeClient.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.AssemblyInfoInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.AssemblyInfo.cs
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.csproj.CoreCompileInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.sourcelink.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\refint\_2_PipeClient.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\_2_PipeClient.genruntimeconfig.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\Asynchronous_programming_C#\_2_PipeClient\obj\Debug\net8.0\ref\_2_PipeClient.dll

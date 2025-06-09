@@ -1,0 +1,21 @@
+﻿@model LibraryManagement.Models.Author
+@{
+    Layout = "_Layout";
+}
+
+<h2>Создать автора</h2>
+
+<form method="post">
+    <div>
+        <label>Имя:</label>
+        <input asp-for="Name" required />
+    </div>
+    <div>
+        <label>Биография:</label>
+        <textarea asp-for="Biography"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Создать" />
+        <a href="/Authors">Назад к списку</a>
+    </div>
+</form>

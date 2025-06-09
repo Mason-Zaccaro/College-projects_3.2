@@ -1,0 +1,28 @@
+﻿@model IEnumerable<LibraryManagement.Models.Book>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Книги</h2>
+<a href="/Books/Create">Добавить новую книгу</a>
+
+<table border="1">
+    <tr>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Дата публикации</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author.Name</td>
+            <td>@book.PublicationDate.ToShortDateString()</td>
+            <td>
+                <a href="/Books/Edit/@book.Id">Редактировать</a> |
+                <a href="/Books/Delete/@book.Id">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>

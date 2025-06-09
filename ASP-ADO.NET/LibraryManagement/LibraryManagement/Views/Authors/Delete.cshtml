@@ -1,0 +1,18 @@
+﻿@model LibraryManagement.Models.Author
+@{
+    Layout = "_Layout";
+}
+
+<h2>Удалить автора</h2>
+
+<p>Вы уверены, что хотите удалить этого автора?</p>
+<div>
+    <strong>Имя:</strong> @Model.Name<br />
+    <strong>Книги:</strong> @Model.Books.Count
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Удалить" />
+    <a href="/Authors">Отмена</a>
+</form>

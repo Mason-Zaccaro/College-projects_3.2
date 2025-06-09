@@ -1,0 +1,28 @@
+﻿@model IEnumerable<LibraryManagement.Models.Author>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Авторы</h2>
+<a href="/Authors/Create">Добавить нового автора</a>
+
+<table border="1">
+    <tr>
+        <th>Имя</th>
+        <th>Биография</th>
+        <th>Количество книг</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var author in Model)
+    {
+        <tr>
+            <td>@author.Name</td>
+            <td>@author.Biography</td>
+            <td>@author.Books.Count</td>
+            <td>
+                <a href="/Authors/Edit/@author.Id">Редактировать</a> |
+                <a href="/Authors/Delete/@author.Id">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>

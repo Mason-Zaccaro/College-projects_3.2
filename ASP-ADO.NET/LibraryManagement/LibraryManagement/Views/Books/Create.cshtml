@@ -1,0 +1,40 @@
+﻿@model LibraryManagement.Models.Book
+@{
+    Layout = "_Layout";
+}
+
+<h2>Создать книгу</h2>
+
+<form method="post">
+    <div>
+        <label>Название:</label>
+        <input asp-for="Title" required />
+        <span asp-validation-for="Title" style="color: red;"></span>
+    </div>
+    <div>
+        <label>Автор:</label>
+        <select asp-for="AuthorId" asp-items="ViewBag.AuthorId" required>
+            <option value="">Выберите автора</option>
+        </select>
+        <span asp-validation-for="AuthorId" style="color: red;"></span>
+    </div>
+    <div>
+        <label>Дата публикации:</label>
+        <input asp-for="PublicationDate" type="date" />
+    </div>
+    <div>
+        <input type="submit" value="Создать" />
+        <a href="/Books">Назад к списку</a>
+    </div>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div style="color: red;">
+        <h4>Ошибки:</h4>
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

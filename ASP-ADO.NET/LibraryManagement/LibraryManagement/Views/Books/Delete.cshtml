@@ -1,0 +1,19 @@
+﻿@model LibraryManagement.Models.Book
+@{
+    Layout = "_Layout";
+}
+
+<h2>Удалить книгу</h2>
+
+<p>Вы уверены, что хотите удалить эту книгу?</p>
+<div>
+    <strong>Название:</strong> @Model.Title<br />
+    <strong>Автор:</strong> @Model.Author.Name<br />
+    <strong>Дата публикации:</strong> @Model.PublicationDate.ToShortDateString()
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Удалить" />
+    <a href="/Books">Отмена</a>
+</form>

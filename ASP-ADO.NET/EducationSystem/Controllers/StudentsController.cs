@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EducationSystem.Data;
 using EducationSystem.Models;
@@ -30,6 +34,7 @@ namespace EducationSystem.Controllers
             }
 
             var student = await _context.Students
+                .Include(s => s.Courses)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
@@ -45,9 +50,10 @@ namespace EducationSystem.Controllers
             return View();
         }
 
+        // POST: Students/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email")] Student student)
+        public async Task<IActionResult> Create([Bind("Id,Name,Email")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -66,17 +72,22 @@ namespace EducationSystem.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
+            var student = await _context.Students
+                .Include(s => s.Courses)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
                 return NotFound();
             }
+            
+            ViewBag.AllCourses = await _context.Courses.ToListAsync();
             return View(student);
         }
 
+        // POST: Students/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Email")] Student student, int[] selectedCourses)
         {
             if (id != student.Id)
             {
@@ -87,17 +98,34 @@ namespace EducationSystem.Controllers
             {
                 try
                 {
-                    var existingStudent = await _context.Students.FindAsync(id);
-                    if (existingStudent == null)
+                    var studentToUpdate = await _context.Students
+                        .Include(s => s.Courses)
+                        .FirstOrDefaultAsync(s => s.Id == id);
+
+                    if (studentToUpdate == null)
                     {
                         return NotFound();
                     }
-                    
-                    existingStudent.FirstName = student.FirstName;
-                    existingStudent.LastName = student.LastName;
-                    existingStudent.Email = student.Email;
-                    
-                    _context.Update(existingStudent);
+
+                    studentToUpdate.Name = student.Name;
+                    studentToUpdate.Email = student.Email;
+
+                    // Очищаем существующие курсы
+                    studentToUpdate.Courses.Clear();
+
+                    // Добавляем выбранные курсы
+                    if (selectedCourses != null)
+                    {
+                        var selectedCoursesToAdd = await _context.Courses
+                            .Where(c => selectedCourses.Contains(c.Id))
+                            .ToListAsync();
+                        
+                        foreach (var course in selectedCoursesToAdd)
+                        {
+                            studentToUpdate.Courses.Add(course);
+                        }
+                    }
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -113,6 +141,8 @@ namespace EducationSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            
+            ViewBag.AllCourses = await _context.Courses.ToListAsync();
             return View(student);
         }
 
@@ -134,13 +164,17 @@ namespace EducationSystem.Controllers
             return View(student);
         }
 
+        // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var student = await _context.Students.FindAsync(id);
-            _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
+            if (student != null)
+            {
+                _context.Students.Remove(student);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Index));
         }
 

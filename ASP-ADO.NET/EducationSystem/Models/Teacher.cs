@@ -5,18 +5,24 @@ namespace EducationSystem.Models
 {
     public class Teacher
     {
+        public Teacher()
+        {
+            // Инициализируем коллекцию при создании объекта
+            Courses = new List<Course>();
+        }
+        
         public int Id { get; set; }
-        
-        public required string FirstName { get; set; }
-        
-        public required string LastName { get; set; }
-        
-        public required string Email { get; set; }
-        
-        // Навигационное свойство для курсов, которые ведет преподаватель
-        public ICollection<Course> Courses { get; set; } = new List<Course>();
-        
-        // Вычисляемое свойство для полного имени
-        public string FullName => $"{FirstName} {LastName}";
+
+        [Required]
+        [StringLength(100)]
+        public string Name { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        // Навигационное свойство для отношения один-ко-многим с Course
+        public ICollection<Course> Courses { get; set; }
     }
 }

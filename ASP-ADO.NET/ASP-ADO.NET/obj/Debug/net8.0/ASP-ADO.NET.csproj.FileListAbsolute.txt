@@ -1,0 +1,15 @@
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\bin\Debug\net8.0\ASP-ADO.NET.exe
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\bin\Debug\net8.0\ASP-ADO.NET.deps.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\bin\Debug\net8.0\ASP-ADO.NET.runtimeconfig.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\bin\Debug\net8.0\ASP-ADO.NET.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\bin\Debug\net8.0\ASP-ADO.NET.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.AssemblyInfoInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.AssemblyInfo.cs
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.csproj.CoreCompileInputs.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.sourcelink.json
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\refint\ASP-ADO.NET.dll
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.pdb
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ASP-ADO.NET.genruntimeconfig.cache
+D:\Study\3_Course\2_Semester\College-projects_3.2\ASP-ADO.NET\ASP-ADO.NET\obj\Debug\net8.0\ref\ASP-ADO.NET.dll

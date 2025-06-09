@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace EducationSystem.Controllers
         // GET: Teachers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Teachers.ToListAsync());
+            return View(await _context.Teachers.Include(t => t.Courses).ToListAsync());
         }
 
         // GET: Teachers/Details/5
@@ -30,6 +31,7 @@ namespace EducationSystem.Controllers
             }
 
             var teacher = await _context.Teachers
+                .Include(t => t.Courses)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (teacher == null)
             {
@@ -45,9 +47,10 @@ namespace EducationSystem.Controllers
             return View();
         }
 
+        // POST: Teachers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,Email")] Teacher teacher)
+        public async Task<IActionResult> Create([Bind("Id,Name,Email")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -74,9 +77,10 @@ namespace EducationSystem.Controllers
             return View(teacher);
         }
 
+        // POST: Teachers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email")] Teacher teacher)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Email")] Teacher teacher)
         {
             if (id != teacher.Id)
             {
@@ -87,17 +91,7 @@ namespace EducationSystem.Controllers
             {
                 try
                 {
-                    var existingTeacher = await _context.Teachers.FindAsync(id);
-                    if (existingTeacher == null)
-                    {
-                        return NotFound();
-                    }
-                    
-                    existingTeacher.FirstName = teacher.FirstName;
-                    existingTeacher.LastName = teacher.LastName;
-                    existingTeacher.Email = teacher.Email;
-                    
-                    _context.Update(existingTeacher);
+                    _context.Update(teacher);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -134,13 +128,17 @@ namespace EducationSystem.Controllers
             return View(teacher);
         }
 
+        // POST: Teachers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var teacher = await _context.Teachers.FindAsync(id);
-            _context.Teachers.Remove(teacher);
-            await _context.SaveChangesAsync();
+            if (teacher != null)
+            {
+                _context.Teachers.Remove(teacher);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Index));
         }
 

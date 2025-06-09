@@ -7,40 +7,31 @@
 <h1>Курсы</h1>
 
 <p>
-    <a asp-action="Create">Создать новый курс</a>
+    <a asp-action="Create" class="btn btn-primary">Добавить новый курс</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Teacher)
-            </th>
-            <th></th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Преподаватель</th>
+            <th>Количество студентов</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.Teacher.Name)</td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @(item.Students != null ? item.Students.Count() : 0)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Teacher.FullName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Подробности</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a> |
-                <a asp-controller="Enrollments" asp-action="Index" asp-route-courseId="@item.Id">Список студентов</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Удалить</a>
             </td>
         </tr>
 }
